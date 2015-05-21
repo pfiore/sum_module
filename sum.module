@@ -23,7 +23,7 @@ function sum_form() {
     $form['left_number'] = array(
         '#title' => 'Left number',
         '#type' => 'textfield',
-        '#description' => t('Please enter your starting number.'),
+        '#description' => t('Please enter your starting number(must be even).'),
         '#element_validate' => array('element_validate_number', 'element_validate_range', 'element_validate_even'),
         '#required' => TRUE,
     );
@@ -31,7 +31,7 @@ function sum_form() {
     $form['right_number'] = array(
         '#title' => 'Right number',
         '#type' => 'textfield',
-        '#description' => t('Please enter a number to add to the starting number.'),
+        '#description' => t('Please enter a number to add to the starting number(must be odd).'),
         '#element_validate' => array('element_validate_number', 'element_validate_range', 'element_validate_odd'),
         '#required' => TRUE,
     );
@@ -52,13 +52,13 @@ function element_validate_range($element) {
 
 function element_validate_even($element) {
     if ($element['#value'] % 2 != 0){
-        form_error($element, t('Number must be even.'));
+        form_error($element, t('Left number must be even.'));
     }
 }
 
 function element_validate_odd($element){
     if ($element['#value'] % 2 == 0) {
-        form_error($element, t('Number must be odd.'));
+        form_error($element, t('Right number must be odd.'));
     }
 }
 
