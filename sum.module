@@ -57,7 +57,7 @@ function element_validate_even($element) {
 }
 
 function element_validate_odd($element){
-    if ($element['#value'] % 2 = 0) {
+    if ($element['#value'] % 2 == 0) {
         form_error($element, t('Number must be odd.'));
     }
 }
