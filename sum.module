@@ -6,14 +6,14 @@ function sum_menu() {
         'page callback' => 'drupal_get_form',
         'page arguments' => array('sum_form'),
         'access callback' => TRUE,
-        'type' => MENU_NORMAL_ITEM
+        'type' => MENU_NORMAL_ITEM,
     );
 
     $items['success'] = array(
         'title' => 'Success',
         'page callback' => 'sum_success',
         'access callback' => TRUE,
-        'type' => MENU_CALLBACK
+        'type' => MENU_CALLBACK,
     );
 
     return $items;
@@ -23,18 +23,22 @@ function sum_form() {
     $form['left_number'] = array(
         '#title' => 'Left number',
         '#type' => 'textfield',
-        '#description' => t('Please enter your starting number.')
+        '#description' => t('Please enter your starting number.'),
+        '#element_validate' => array('element_validate_number'),
+        '#required' => TRUE,
     );
 
     $form['right_number'] = array(
         '#title' => 'Right number',
         '#type' => 'textfield',
-        '#description' => t('Please enter a number to add to the starting number.')
+        '#description' => t('Please enter a number to add to the starting number.'),
+        '#element_validate' => array('element_validate_number'),
+        '#required' => TRUE,
     );
 
     $form['submit'] = array(
         '#type' => 'submit',
-        '#value' => 'Calculate Sum'
+        '#value' => 'Calculate Sum',
     );
 
     return $form;
