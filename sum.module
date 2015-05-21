@@ -45,9 +45,9 @@ function sum_form() {
 }
 
 function element_validate_range($element) {
-//     if ($element['#value'] > 50 || $element['#value'] < -50) {
-//         form_error($element, t('Number must be less than 50 or greater than -50.'));
-//     }
+    if ($element['#value'] > 50 || $element['#value'] < -50) {
+        form_error($element, t('Number must be less than 50 or greater than -50.'));
+    }
 }
 function sum_form_submit($form, &$form_state) {
     $first_number = $form_state['values']['left_number'];
